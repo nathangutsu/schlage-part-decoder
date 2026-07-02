@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Schlage Part Number Decoder</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Schlage Part Number Decoder</h1>
+    <p class="sub">
+      Paste a Schlage part number and see what every segment means — function, lever design,
+      trim/escutcheon, cylinder type, finish, handing, indicator options and keying.
+      Covers L Series mortise locks, ND Series cylindrical locks, ALX Series Grade&nbsp;2 locks,
+      and CO-100 standalone electronic locks, built from the Allegion catalogs.
+    </p>
+  </header>
+
+  <div class="panel">
+    <label class="field-label" for="partInput">Part number</label>
+    <div class="input-row">
+      <input type="text" id="partInput" placeholder="e.g. L9456L 06N L583-363 OS-OCC IS-OCC" autocomplete="off" spellcheck="false" />
+      <button id="decodeBtn" type="button">Decode</button>
+    </div>
+    <div class="examples">
+      <span class="ex-label">Try:</span>
+      <div id="exampleBtns" style="display:contents"></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div id="resultSeries"></div>
+    <div id="resultFunctionInfo"></div>
+    <div id="resultRows"></div>
+  </div>
+
+  <div class="panel">
+    <label class="field-label">Full reference tables</label>
+    <div class="series-tabs" id="seriesTabs"></div>
+    <div id="seriesRefContent"></div>
+  </div>
+
+  <footer>
+    Reference data compiled from the Schlage L Series, ND Series, ALX Series, CO-100 and
+    Key Systems/Cylinders &amp; Keys Allegion catalogs. Coverage is best-effort — deviations,
+    special options and less-common part numbers may not be recognized; consult the current
+    Allegion price book for authoritative ordering data.
+  </footer>
+</div>
+
+<script src="data.js"></script>
+<script src="functionDetails.js"></script>
+<script src="parser.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
