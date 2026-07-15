@@ -74,6 +74,10 @@ const COMMON = {
     "09-904": "Classroom thumbturn cylinder, compression ring and spring",
     "09-905": "Classroom thumbturn cylinder, ring/spring/blocking ring for 1-3/4\" doors",
     "10-091": "Armored front strike (for double-door dummy/strike applications)",
+    "10-025": "Cylindrical lock strike — ANSI, no box, 1-1/4\" x 4-7/8\", 1-3/16\" lip (standard)",
+    "10-072": "Mortise lock strike — 1-1/4\" x 4-7/8\", square corner, box, 1-3/16\" lip (standard)",
+    "13-247": "Cylindrical lock deadlatch — 2-3/4\" backset, square corner, 1-1/8\" x 2-1/4\" (standard)",
+    "09-663": "Mortise armor front — 1-1/4\" wide, square corner (standard)",
     "LLL": "Brand field code for “Less” — used when specifying that some other attribute (lever, rose, cylinder, etc.) is being ordered as “less” (omitted/not furnished)",
     "XL11-635": "Special option: cylinder x thumbturn deadbolt with fixed levers (L9460)",
     "XL11-886": "Special option: inside active lever deadbolt configuration (L9460/L9464/L9462)",
@@ -156,6 +160,21 @@ const COMMON = {
       label: "Door prep",
       test: /^ED$/,
       describe: () => "Extended Difference (unequal split between faces)"
+    },
+    {
+      label: "Door prep",
+      test: /^LIP(\d+(-\d+\/\d+)?)$/,
+      describe: (m) => `Strike lip length: ${m[1]}\" (1-3/16\" is the standard default lip)`
+    },
+    {
+      // Schlage's 3-digit door-thickness code: whole inch, numerator, denominator
+      // digits concatenated with no separators, e.g. "134" = 1-3/4", "138" = 1-3/8".
+      label: "Door prep",
+      test: /^([12])([1-3])([48])$/,
+      describe: (m) => {
+        const [, whole, num, den] = m;
+        return `Door thickness: ${whole}-${num}/${den}\" (Schlage 3-digit thickness code)`;
+      }
     },
     {
       label: "Keying",
